@@ -1,7 +1,7 @@
 {
   "name": "@himenon/pdf-crop-margins",
   "version": "1.0.1",
-  "description": "texlive ja",
+  "description": "Docker image for pdfCropMargins",
   "keywords": [
     "typescript"
   ],
