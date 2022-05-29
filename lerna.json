@@ -1,5 +1,5 @@
 {
-  "version": "independent",
+  "version": "fixed",
   "command": {
     "version": {
       "conventionalCommits": true,
