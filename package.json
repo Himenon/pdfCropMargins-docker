@@ -28,7 +28,7 @@
     "docker:cleanup": "./scripts/docker-cleanup.mjs",
     "docker:push": "./scripts/docker-push.mjs",
     "clean": "pnpm ts ./scripts/clean.ts",
-    "lerna:version:up": "lerna version --yes",
+    "lerna:version:up": "lerna version --yes"
   },
   "devDependencies": {
     "lerna": "4.0.0",
