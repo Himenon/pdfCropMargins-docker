@@ -1,15 +1,15 @@
-# @himenon/http-echo
+# @himenon/pdf-crop-margins
 
 ```bash
-docker pull ghcr.io/himenon/http-echo
+docker pull ghcr.io/himenon/pdf-crop-margins
 
-docker run -p 80:80 -e PORT=80 --rm -t ghcr.io/himenon/http-echo
+docker run --rm -t ghcr.io/himenon/pdf-crop-margins
 ```
 
 ## LICENCE
 
-[@himenon/http-echo](https://github.com/Himenon/http-echo)・MIT
+[@himenon/pdf-crop-margins](https://github.com/Himenon/pdf-crop-margins)・MIT
 
 ## Original Source
 
-- https://github.com/solsson/docker-http-echo
+- https://github.com/solsson/docker-pdf-crop-margins
