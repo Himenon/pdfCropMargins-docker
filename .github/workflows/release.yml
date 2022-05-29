@@ -18,18 +18,11 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: pnpm/action-setup@v2.2.0
+      - name: Docker Build & Push
+        uses: docker/build-push-action@v3
         with:
-          version: 7.1.0
-      - uses: actions/setup-node@v2
-        with:
-          node-version: "16"
-          cache: "pnpm"
-      - run: pnpm i --frozen-lockfile
-      - run: |
-          pnpm docker:build
-          pnpm docker:push
-          docker images
-        env:
-          CI: true
-          DOCKER_USER_NAME: ${{ github.actor }}
+          context: .
+          push: true
+          tags: ghcr.io/himenon/pdf-crop-margins:latest,ghcr.io/himenon/pdf-crop-margins:${{ github.event.release.tag_name }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
