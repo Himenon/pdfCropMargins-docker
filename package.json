@@ -1,6 +1,6 @@
 {
   "name": "@himenon/pdf-crop-margins",
-  "version": "1.0.6",
+  "version": "1.0.0",
   "description": "node library template",
   "keywords": [
     "typescript"
