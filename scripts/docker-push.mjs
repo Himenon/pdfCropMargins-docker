@@ -1,8 +1,10 @@
-#!/usr/bin/env zx
+import "zx/globals";
+import fs from "fs";
 
-const content = await fs.readFile("./package.json");
-const pkg = JSON.parse(content.toString());
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 
-const actor = process.env.DOCKER_USER_NAME.toLowerCase();
-await $`docker push ghcr.io/${actor}/pdf-crop-margins:${pkg.version}`;
-await $`docker push ghcr.io/${actor}/pdf-crop-margins:latest`;
+const scope = pkg.docker.scope;
+const imageName = pkg.docker.imageName;
+
+await $`docker push ghcr.io/${scope}/${imageName}:${pkg.version}`;
+await $`docker push ghcr.io/${scope}/${imageName}:latest`;
