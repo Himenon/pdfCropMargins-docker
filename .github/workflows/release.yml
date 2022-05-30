@@ -2,7 +2,7 @@ name: Release Workflow
 
 on:
   release:
-    types: [released]
+    types: [created]
 
 jobs:
   build:
@@ -18,11 +18,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set tag var
+        id: vars
+        run: echo ::set-output name=docker_tag::$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
       - name: Docker Build & Push
         uses: docker/build-push-action@v3
         with:
           context: .
           push: true
-          tags: ghcr.io/himenon/pdf-crop-margins:latest,ghcr.io/himenon/pdf-crop-margins:${{ github.event.release.tag_name }}
+          tags: ghcr.io/himenon/pdf-crop-margins:latest,ghcr.io/himenon/pdf-crop-margins:${{ steps.vars.outputs.docker_tag }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
