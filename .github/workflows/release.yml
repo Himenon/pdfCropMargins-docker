@@ -27,5 +27,3 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/himenon/pdf-crop-margins:latest,ghcr.io/himenon/pdf-crop-margins:${{ steps.vars.outputs.docker_tag }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max

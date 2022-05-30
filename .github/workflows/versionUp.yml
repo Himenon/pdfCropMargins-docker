@@ -21,6 +21,11 @@ jobs:
           node-version: "16.x"
           cache: "pnpm"
       - run: pnpm i --frozen-lockfile
+      - name: Set tag var
+        id: vars
+        run: echo ::set-output name=docker_tag::$(echo ${{ github.event.release.tag_name }} | sed -e 's/^v//')
+      - name: debug
+        run: echo ${{ steps.vars.outputs.docker_tag }}
       - name: Semantic Release
         run: |
           pnpm semantic-release
